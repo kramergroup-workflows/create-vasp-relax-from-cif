@@ -11,9 +11,10 @@ steps:
       from_secret: docker-hub-password
     repo: registry.kramergroup.science/workflows/matsci-base
     build_args: 
-    - S3_ACCESS_KEY_ID=${S3_ACCESS_KEY_ID}
-    - S3_SECRET_ACCESS_KEY=${S3_SECRET_ACCESS_KEY}
-    - S3_HOST=${S3_HOST}
+    - S3_ACCESS_KEY_ID=${aws-access-key-id}
+    - S3_SECRET_ACCESS_KEY=${aws-secret-access-key}
+    - S3_HOST=${s3-host}
+    secrets: [aws-access-key-id,aws-secret-access-key,s3-host]
   environment:
     S3_ACCESS_KEY_ID:
       from_secret: aws-access-key-id
