@@ -10,11 +10,6 @@ steps:
     password: 
       from_secret: docker-hub-password
     repo: registry.kramergroup.science/workflows/matsci-base
-    access_key:
-      from_secret: S3_ACCESS_KEY_ID
-    s3_host:
-      from_secret: docker-hub-username
-    build_args: 
-    - S3_ACCESS_KEY_ID=$PLUGIN_ACCESS_KEY
-    - S3_SECRET_ACCESS_KEY=${PLUGIN_ACCESS_SECRET}
-    - S3_HOST=$PLUGIN_S3_HOST
+    build_args:
+      from_secret: build-args
+    
