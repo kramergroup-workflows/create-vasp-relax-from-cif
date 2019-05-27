@@ -2,11 +2,15 @@ kind: pipeline
 name: default
 
 steps:
-- name: get-psps
-  image: minio/mc
-  volumes:
-  - name: psps
-    path: /tmp/psps
+- name: kaniko
+  image: banzaicloud/drone-kaniko
+  settings:
+    username: 
+      from_secret: docker-hub-username
+    password: 
+      from_secret: docker-hub-password
+    repo: registry.kramergroup.science/workflows/matsci-base
+    build_args: S3_ACCESS_KEY_ID,S3_SECRET_ACCESS_KEY,S3_HOST
   environment:
     S3_ACCESS_KEY_ID:
       from_secret: aws-access-key-id
@@ -14,10 +18,3 @@ steps:
       from_secret: aws-secret-access-key
     S3_HOST:
       from_secret: s3-host
-  commands:
-  - mc config host add --insecure minio https://$S3_HOST $S3_ACCESS_KEY_ID $S3_SECRET_ACCESS_KEY
-  - mc --insecure ls minio/vasp
-
-volumes:
-- name: psps
-  temp: {}
