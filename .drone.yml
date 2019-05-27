@@ -15,7 +15,7 @@ steps:
     S3_HOST:
       from_secret: s3-host
   commands:
-  - mc config host add minio https://${S3_HOST} ${S3_ACCESS_KEY_ID} ${S3_SECRET_ACCESS_KEY}
+  - mc config host add minio https://$S3_HOST $S3_ACCESS_KEY_ID $S3_SECRET_ACCESS_KEY
   - mc ls minio/vasp
 
 volumes:
