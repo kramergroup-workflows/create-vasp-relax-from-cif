@@ -4,7 +4,7 @@ ARG S3_HOST
 ARG S3_ACCESS_KEY_ID
 ARG S3_SECRET_ACCESS_KEY
 
-RUN echo "host: ${S3_HOST}"
+RUN echo "host: $S3_HOST"
 RUN mc config host add --insecure minio https://$S3_HOST $S3_ACCESS_KEY_ID $S3_SECRET_ACCESS_KEY
 RUN mc --insecure cp minio/vasp/vasp5_psps.tar.gz /tmp/vasp5_psps.tar.gz
 RUN RUN tar xvzf /tmp/vasp5_psps.tar.gz /VASP5_psps
