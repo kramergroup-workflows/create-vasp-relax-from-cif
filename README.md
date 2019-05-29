@@ -1,22 +1,30 @@
-# Create VASP relax calculation from CIF
+# Vasp Tools 
 
-This worklfow container creates a VASP relax run using sensible defaults from the [materialsproject.org](http://www.materialsproject.org).
+This repository bundles a number of VASP related tools 
 
-## Configuration
+## Create VASP relax calculation from CIF
+
+```bash
+vasp-tools create-from-cif
+```
+
+This creates a VASP relax run using sensible defaults from the [materialsproject.org](http://www.materialsproject.org).
+
+### Configuration
 
 The container expects a CIF file in `/data/structure.cif` containing the structure. The location of the cif file can be 
 configured via environment variables. 
 
 The generated VASP input files are written to `/data/vasp`.
 
-### Environment variables
+#### Environment variables
 
 | Name         | Default               | Description                                   |
 | ------------ | --------------------- | --------------------------------------------- |
 | `CIF_FILE`   | `/data/structure.cif` | The full path of the structure CIF file       |
 | `VASP_FILES` | `/data/vasp`          | The location for writing the VASP input files |
 
-## Overwriting Vasp Parameters
+### Overwriting Vasp Parameters
 
 The container parses `stdin` for a JSON data-structure to overwrite `INCAR` defaults. For instance:
 
@@ -28,4 +36,3 @@ The container parses `stdin` for a JSON data-structure to overwrite `INCAR` defa
 ```
 
 could be used to set a custom energy cut-off and convergence criterium.
-

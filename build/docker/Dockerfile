@@ -28,6 +28,8 @@ RUN pmg config -p /VASP5_psps /psps && \
     pmg config --add PMG_VASP_PSP_DIR /psps && \
     pmg config --add PMG_DEFAULT_FUNCTIONAL PBE_52
 
-COPY create_vasp_inputs.py /create_vasp_inputs.py
+COPY scripts /scripts
+WORKDIR /
+COPY entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT [ "/create_vasp_inputs.py" ]
+ENTRYPOINT [ "/entrypoint.sh" ]
