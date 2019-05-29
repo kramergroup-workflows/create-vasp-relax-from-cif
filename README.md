@@ -1,5 +1,7 @@
 # Vasp Tools 
 
+[![Build Status](https://drone-ci-kramergroup.serveo.net/api/badges/kramergroup-workflows/vasp-tools/status.svg)](https://drone-ci-kramergroup.serveo.net/kramergroup-workflows/vasp-tools)
+
 This repository bundles a number of VASP related tools 
 
 ## Create VASP relax calculation from CIF
